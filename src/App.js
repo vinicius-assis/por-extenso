@@ -1,10 +1,11 @@
 import React from 'react';
+import GlobalStyle from './styles/GlobalStyle'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Testando!</h1>
-    </div>
+    <>
+      <GlobalStyle />
+    </>
   );
 }
 
