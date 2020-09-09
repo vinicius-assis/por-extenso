@@ -15,6 +15,7 @@ export default createGlobalStyle`
   }
 
   body {
+    width: 100%;
     font: 14px 'Roboto', sans-serif;
     background: #0F2027;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
@@ -22,4 +23,11 @@ export default createGlobalStyle`
     color: #fff;
     -webkit-font-smoothing: antialiased !important;
   }
+
+  #root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 `
