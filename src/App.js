@@ -10,11 +10,16 @@ import Display from './components/Display';
 const App = () => {
   const [number, setNumber] = React.useState('')
   const [extenso, setExtenso] = React.useState('')
+  const [err, setErr] =  React.useState(null)
 
   function handleChange (e) {
-    e.preventDefault()
-    let value = money(e.target.value)
-    setNumber(value)
+    let value = e.target.value
+    if (!value) {
+      setErr(true)
+    } else {
+      setErr(false)
+      setNumber(money(value))
+    }
   }
 
   function createResult(reais, centavos) {
@@ -33,11 +38,16 @@ const App = () => {
     return !!reaisExtenso && !!centExtenso ? `${reaisExtenso} e ${centExtenso}` : `${reaisExtenso}${centExtenso}`
   }
 
-  function handleClick () {
-    const regex = new RegExp('[^0-9,]', 'g')
-    const [reais, centavos] = number.replace(regex, '').split(',')
-       
-    setExtenso(createResult(reais, centavos))
+  function handleClick (e) {
+    if (number && !(number.match(/R\$\s0,0{0,}$/g))) {
+      const regex = new RegExp('[^0-9,]', 'g')
+      const [reais, centavos] = number.replace(regex, '').split(',')
+           
+      setExtenso(createResult(reais, centavos))
+    } else {
+      setExtenso('')
+      setErr(true)
+    }
   }
 
   function money (value) {
@@ -50,7 +60,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Input action={handleChange} value={number}/>
+      <Input action={handleChange} value={number} err={err}/>
       <Button handleClick={handleClick} />
       {extenso && <Display>{extenso}</Display>}
     </>
