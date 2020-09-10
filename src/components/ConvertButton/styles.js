@@ -5,7 +5,7 @@ export const Button = styled.button`
   height: 60px;
   overflow: hidden;
   padding: 0;
-  margin-top: 20px;
+  margin-top: 40px;
 `
 export const Icon = styled.img.attrs( props => ({
   src: props.img,

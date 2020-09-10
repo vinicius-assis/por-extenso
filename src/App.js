@@ -6,6 +6,7 @@ import GlobalStyle from './styles/GlobalStyle'
 import Input from './components/Input';
 import Button from './components/ConvertButton';
 import Display from './components/Display';
+import { ErrorMessage } from './components/ErrorMessage';
 
 const App = () => {
   const [number, setNumber] = React.useState('')
@@ -61,6 +62,7 @@ const App = () => {
     <>
       <GlobalStyle />
       <Input action={handleChange} value={number} err={err}/>
+      {err && <ErrorMessage>Digite um número válido</ErrorMessage>}
       <Button handleClick={handleClick} />
       {extenso && <Display>{extenso}</Display>}
     </>
