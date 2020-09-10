@@ -1,5 +1,5 @@
 import React from 'react'
-import { Label, Field } from './style'
+import { Label, Field } from './styles'
 
 
 
