@@ -9,7 +9,8 @@ export const Label = styled.label`
 `
 
 export const Field = styled.input.attrs( props => ({
-  placeholder: props.placeholder
+  placeholder: props.placeholder,
+  maxLength: 19
 }))`
   height: 45px;
   margin-top: 10px;
