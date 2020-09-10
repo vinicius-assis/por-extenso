@@ -8,7 +8,11 @@ export const Label = styled.label`
   flex-direction: column;
 `
 
-export const Field = styled.input`
+export const Field = styled.input.attrs( props => ({
+  placeholder: props.placeholder
+}))`
   height: 45px;
   margin-top: 10px;
+  font-size: 1.4rem;
+  text-align: center;
 `
