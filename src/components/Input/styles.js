@@ -16,4 +16,6 @@ export const Field = styled.input.attrs( props => ({
   margin-top: 10px;
   font-size: 1.4rem;
   text-align: center;
-`
+  border: ${ props => props.err ? "2px solid rgba(255, 0, 0, 0.6)" : "2px solid #fff"};
+  border-radius: 5px;
+  `
