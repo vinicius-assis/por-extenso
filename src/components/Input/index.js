@@ -3,10 +3,10 @@ import { Label, Field } from './styles'
 
 
 
-const Input = () => (
+const Input = ({ action }) => (
   <Label>
     Valor
-    <Field />
+    <Field onChange={action}/>
   </Label>
 )
 
