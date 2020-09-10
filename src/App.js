@@ -25,7 +25,12 @@ const App = () => {
       return reais === '1' 
         ? setExtenso(`${numero.porExtenso(reais)} real`) 
         : setExtenso(`${numero.porExtenso(reais)} reais`)
-    } else {
+    } else if (centavos == '01') {
+      return reais === '1' 
+        ? setExtenso(`${numero.porExtenso(reais)} real e ${numero.porExtenso(centavos)} centavo`) 
+        : setExtenso(`${numero.porExtenso(reais)} reais e ${numero.porExtenso(centavos)} centavo`)
+    } 
+    else {
       return reais === '1' 
         ? setExtenso(`${numero.porExtenso(reais)} real e ${numero.porExtenso(centavos)} centavos`) 
         : setExtenso(`${numero.porExtenso(reais)} reais e ${numero.porExtenso(centavos)} centavos`)
