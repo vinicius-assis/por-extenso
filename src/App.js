@@ -18,14 +18,18 @@ const App = () => {
   }
 
   function handleClick () {
-    const [reais, centavos] = number.replace(/[^0-9\,]/g, '').split(',')
+    const regex = new RegExp('[^0-9,]', 'g')
+    const [reais, centavos] = number.replace(regex, '').split(',')
 
     if(centavos === '00') {
-      return reais === '1' ? setExtenso(`${numero.porExtenso(reais)} real`) : setExtenso(`${numero.porExtenso(reais)} reais`)
+      return reais === '1' 
+        ? setExtenso(`${numero.porExtenso(reais)} real`) 
+        : setExtenso(`${numero.porExtenso(reais)} reais`)
     } else {
-      return reais === '1' ? setExtenso(`${numero.porExtenso(reais)} real e ${numero.porExtenso(centavos)} centavos`) : setExtenso(`${numero.porExtenso(reais)} reais e ${numero.porExtenso(centavos)} centavos`)
+      return reais === '1' 
+        ? setExtenso(`${numero.porExtenso(reais)} real e ${numero.porExtenso(centavos)} centavos`) 
+        : setExtenso(`${numero.porExtenso(reais)} reais e ${numero.porExtenso(centavos)} centavos`)
     }
-    
   }
 
   function money (value) {
@@ -40,7 +44,7 @@ const App = () => {
       <GlobalStyle />
       <Input action={handleChange} value={number}/>
       <Button handleClick={handleClick} />
-      <Display>{extenso}</Display>
+      {extenso && <Display>{extenso}</Display>}
     </>
   );
 }
