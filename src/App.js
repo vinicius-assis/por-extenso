@@ -30,7 +30,7 @@ const App = () => {
       return reais === '1' 
         ? setExtenso(`${reaisExtenso} real`) 
         : setExtenso(`${reaisExtenso} reais`)
-    } else if (centavos == '01') {
+    } else if (centavos === '01') {
       return reais === '1' 
         ? setExtenso(`${reaisExtenso} real e ${centExtenso} centavo`) 
         : setExtenso(`${reaisExtenso} reais e ${centExtenso} centavo`)
