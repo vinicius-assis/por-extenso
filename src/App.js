@@ -13,20 +13,32 @@ const App = () => {
 
   function handleChange (e) {
     e.preventDefault()
-    setNumber(e.target.value)
+    let value = money(e.target.value)
+    setNumber(value)
   }
 
   function handleClick () {
-    const value = number
-    if (number.match(/^[0-9]*$/)) {
-      setExtenso(numero.porExtenso(value, numero.estilo.monetario))
+    const [reais, centavos] = number.replace(/[^0-9\,]/g, '').split(',')
+
+    if(centavos === '00') {
+      return reais === '1' ? setExtenso(`${numero.porExtenso(reais)} real`) : setExtenso(`${numero.porExtenso(reais)} reais`)
+    } else {
+      return reais === '1' ? setExtenso(`${numero.porExtenso(reais)} real e ${numero.porExtenso(centavos)} centavos`) : setExtenso(`${numero.porExtenso(reais)} reais e ${numero.porExtenso(centavos)} centavos`)
     }
+    
+  }
+
+  function money (value) {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(+value.replace(/\D+/g, '') / 100)
   }
 
   return (
     <>
       <GlobalStyle />
-      <Input action={handleChange}/>
+      <Input action={handleChange} value={number}/>
       <Button handleClick={handleClick} />
       <Display>{extenso}</Display>
     </>
