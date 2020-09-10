@@ -17,29 +17,27 @@ const App = () => {
     setNumber(value)
   }
 
+  function createResult(reais, centavos) {
+    const reaisExtenso = reais === '0' 
+      ? ''
+      :  reais === '1' 
+        ?  `${numero.porExtenso(reais)} real` 
+        : `${numero.porExtenso(reais)} reais`
+
+    const centExtenso = centavos === '00' 
+      ? '' 
+      : centavos === '01' 
+        ? `${numero.porExtenso(centavos)} centavo`
+        : `${numero.porExtenso(centavos)} centavos`
   
+    return !!reaisExtenso && !!centExtenso ? `${reaisExtenso} e ${centExtenso}` : `${reaisExtenso}${centExtenso}`
+  }
 
   function handleClick () {
     const regex = new RegExp('[^0-9,]', 'g')
     const [reais, centavos] = number.replace(regex, '').split(',')
-    const reaisExtenso = numero.porExtenso(reais)
-    const centExtenso = numero.porExtenso(centavos)
-    
-
-    if(centavos === '00') {
-      return reais === '1' 
-        ? setExtenso(`${reaisExtenso} real`) 
-        : setExtenso(`${reaisExtenso} reais`)
-    } else if (centavos === '01') {
-      return reais === '1' 
-        ? setExtenso(`${reaisExtenso} real e ${centExtenso} centavo`) 
-        : setExtenso(`${reaisExtenso} reais e ${centExtenso} centavo`)
-    } 
-    else {
-      return reais === '1' 
-        ? setExtenso(`${reaisExtenso} real e ${centExtenso} centavos`) 
-        : setExtenso(`${reaisExtenso} reais e ${centExtenso} centavos`)
-    }
+       
+    setExtenso(createResult(reais, centavos))
   }
 
   function money (value) {
