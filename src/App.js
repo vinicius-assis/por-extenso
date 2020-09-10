@@ -17,23 +17,28 @@ const App = () => {
     setNumber(value)
   }
 
+  
+
   function handleClick () {
     const regex = new RegExp('[^0-9,]', 'g')
     const [reais, centavos] = number.replace(regex, '').split(',')
+    const reaisExtenso = numero.porExtenso(reais)
+    const centExtenso = numero.porExtenso(centavos)
+    
 
     if(centavos === '00') {
       return reais === '1' 
-        ? setExtenso(`${numero.porExtenso(reais)} real`) 
-        : setExtenso(`${numero.porExtenso(reais)} reais`)
+        ? setExtenso(`${reaisExtenso} real`) 
+        : setExtenso(`${reaisExtenso} reais`)
     } else if (centavos == '01') {
       return reais === '1' 
-        ? setExtenso(`${numero.porExtenso(reais)} real e ${numero.porExtenso(centavos)} centavo`) 
-        : setExtenso(`${numero.porExtenso(reais)} reais e ${numero.porExtenso(centavos)} centavo`)
+        ? setExtenso(`${reaisExtenso} real e ${centExtenso} centavo`) 
+        : setExtenso(`${reaisExtenso} reais e ${centExtenso} centavo`)
     } 
     else {
       return reais === '1' 
-        ? setExtenso(`${numero.porExtenso(reais)} real e ${numero.porExtenso(centavos)} centavos`) 
-        : setExtenso(`${numero.porExtenso(reais)} reais e ${numero.porExtenso(centavos)} centavos`)
+        ? setExtenso(`${reaisExtenso} real e ${centExtenso} centavos`) 
+        : setExtenso(`${reaisExtenso} reais e ${centExtenso} centavos`)
     }
   }
 
