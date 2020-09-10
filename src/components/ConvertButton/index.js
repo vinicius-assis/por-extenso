@@ -3,8 +3,8 @@ import { Button, Icon } from './styles'
 
 import ConvertIcon from '../../assets/convert-arrow.png'
 
-const ConvertButton = () => (
-  <Button>
+const ConvertButton = ({ handleClick }) => (
+  <Button onClick={handleClick}>
     <Icon img={ConvertIcon}/>
   </Button>
 )
